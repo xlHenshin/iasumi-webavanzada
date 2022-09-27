@@ -5,6 +5,7 @@ import MainComp from './components/Main.vue'
 
 export default {
   components:{
+    RouterLink, RouterView,
     FooterComp,
     MainComp
   }
@@ -16,35 +17,18 @@ export default {
 <template>
   <header>
     <nav class="nav">
+      <RouterLink to ="/">
         <img class="nav-logo" src="../src/assets/iasumilogo.avif">
+      </RouterLink>
 
-        <ul class="nav-items">
-            <li class="firstItems">
-                <a href="#">
-                    <span>KIGURUMIS</span>
-                </a>
-            </li>
-            <li class="firstItems">
-                <a href="#">
-                    <span>SUPERIOR</span>
-                </a>
-            </li>
-            <li class="firstItems">
-                <a href="#">
-                    <span>INFERIOR</span>
-                </a>
-            </li>
-            <li class="firstItems">
-                <a href="#">
-                    <span>ACCESORIOS</span>
-                </a>
-            </li>
-            <li class="firstItems">
-                <a href="#">
-                    <span>MÁS</span>
-                </a>
-            </li>
-        </ul>
+      <div class="nav-items">
+        <RouterLink to ="/about" class="firstItems">KIGURUMIS</RouterLink>
+        <RouterLink to ="/" class="firstItems">SUPERIOR</RouterLink>
+        <RouterLink to ="/" class="firstItems">INFERIOR</RouterLink>
+        <RouterLink to ="/" class="firstItems">ACCESORIOS</RouterLink>
+        <RouterLink to ="/" class="firstItems">MÁS</RouterLink>
+  
+      </div>
 
         <ul class="nav-items leftitem">
             <li>
@@ -68,13 +52,12 @@ export default {
     </nav>
   </header>
   <main>
-    <MainComp />
+    <RouterView />
   </main>
 
   <footer>
     <FooterComp />
   </footer>
-  <RouterView />
 </template>
 
 <style scoped lang="scss">
@@ -82,6 +65,10 @@ export default {
   header{
     width: 100%;
     position:relative;
+  }
+
+  main{
+    width: 100%;
   }
 
   .nav{
@@ -109,6 +96,7 @@ export default {
         align-items: center;
         list-style: none;
         font-weight: 600;
+        color:black;
     }
 
     .nav-items a{
