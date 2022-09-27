@@ -1,5 +1,5 @@
 <template>
-    <footer>
+    <div class="footer">
         <aside class="footer-aside">
             <h2>SOBRE NOSOTRXS</h2>
             <div class="footer-list">
@@ -60,11 +60,11 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 </template>
 
 <style>
-    footer{
+    .footer{
         width: 100%;
         background-color: #FFE905;
         padding: 32px;
@@ -109,6 +109,10 @@
 
     .newsletterText{
         margin-right: 30px;
+    }
+
+    .newsletterText h2{
+        margin-bottom: 10px;
     }
 
     .newsletterUp{

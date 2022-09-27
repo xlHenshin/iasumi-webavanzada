@@ -1,17 +1,32 @@
+<script>
+    export default {
+        props: {
+            productImg: String,
+            productName: String,
+            price: String,
+        },
+        methods: {
+
+        }
+    }
+</script>
+
 <template>
     <div class="carousel">
 
-<div class="carousel-content">
-  <div class="carousel-text">
-    <h2>ADVENTURE TIME <br/>COLECTION</h2>
-  </div>
-  
-  <a href="#" class="carousel-button">Ver colección</a>
-</div>
+        <div class="carousel-content">
+        <div class="carousel-text">
+            <h2>ADVENTURE TIME <br/>COLECTION</h2>
+        </div>
+        
+        <a href="#" class="carousel-button">Ver colección</a>
+        </div>
 
-<img src="../assets/portada.png">
+        <img src="../assets/portada.png">
 
-</div>
+    </div>
+
+
 </template>
 
 <style>
