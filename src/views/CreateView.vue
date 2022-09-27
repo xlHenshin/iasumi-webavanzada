@@ -72,7 +72,7 @@
             <input placeholder="Precio" v-model="price" type="text" name="Price" id="price" />
             <textarea v-model="description" placeholder="Escribe una descripción" ref="textarea"></textarea>
             <input placeholder="Tipo" v-model="type" type="text" name="Tipo" id="price" />
-            <input type="file" name="File" id="myFileInput" @click="(e)=> readImage(e)">
+            <input type="file" name="File" id="myFileInput" @change="(e)=> readImage(e)">
             <button  @click="(e) => createNewProduct()">CREAR</button>
         </div>
     </section>

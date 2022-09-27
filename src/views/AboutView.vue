@@ -3,23 +3,17 @@
   import { useProductsStore } from "../stores/products";
   
   export default {
-    data() {
-      return {
-        name: "",
-        color: "",
-        file: {},
-      };
-    },
+
     computed: {
       ...mapStores(useProductsStore),
       allProducts() {
         return this.productsStore.getProducts;
       },
     },
-    /*
+    
     mounted(){
       this.productsStore.loadProducts()
-    }*/
+    }
   };
 </script>
   
