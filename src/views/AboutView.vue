@@ -16,9 +16,10 @@
         return this.productsStore.getProducts;
       },
     },
-    //mounted(){
-    //  this.productsStore.loadProducts()
-    //}
+    /*
+    mounted(){
+      this.productsStore.loadProducts()
+    }*/
   };
 </script>
   
@@ -107,7 +108,6 @@
     display: flex;
     align-items: center;
     margin-top: 50px;
-    
     flex-wrap:wrap;
     justify-content: space-between;
     margin-bottom: 80px;

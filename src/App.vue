@@ -23,10 +23,10 @@ export default {
 
       <div class="nav-items">
         <RouterLink to ="/about" class="firstItems">KIGURUMIS</RouterLink>
-        <RouterLink to ="/" class="firstItems">SUPERIOR</RouterLink>
-        <RouterLink to ="/" class="firstItems">INFERIOR</RouterLink>
-        <RouterLink to ="/" class="firstItems">ACCESORIOS</RouterLink>
-        <RouterLink to ="/" class="firstItems">MÁS</RouterLink>
+        <RouterLink to ="/about" class="firstItems">SUPERIOR</RouterLink>
+        <RouterLink to ="/about" class="firstItems">INFERIOR</RouterLink>
+        <RouterLink to ="/about" class="firstItems">ACCESORIOS</RouterLink>
+        <RouterLink to ="/create" class="firstItems">MÁS</RouterLink>
   
       </div>
 

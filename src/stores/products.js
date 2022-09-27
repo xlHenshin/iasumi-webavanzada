@@ -39,9 +39,7 @@ export const useProductsStore = defineStore("products", {
             type: "accesorios"
             },
         ],
-        localStorageProducts: [
-            
-        ]
+        localStorageProducts: []
     }),
     getters: {
         getProducts: (state) => [...state.products],
@@ -50,6 +48,8 @@ export const useProductsStore = defineStore("products", {
         newProduct(product) {
             this.localStorageProducts.push(product)
             this.products.push(product);
+            console.log(localStorage);
+            console.log(window.localStorage)
             localStorage.setItem('products', JSON.stringify(this.localStorageProducts))
         },
         loadProducts() {
