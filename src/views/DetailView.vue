@@ -8,9 +8,6 @@
     },
     computed: {
       ...mapStores(useProductsStore),
-      allProducts() {
-        return this.productsStore.getProducts;
-      },
     },
     mounted() {
       this.currentProduct = this.productsStore.getProductById(

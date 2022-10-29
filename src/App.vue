@@ -35,12 +35,18 @@ export default {
             <li>
                 <span>
                     <img class="nav-icon" src="../src/assets/searchicon.svg" alt="">
-                    <input type="text" class="nav-search" placeholder="Buscar" id="">
+                    <input type="text" class="nav-search" placeholder="Buscar..." id="">
                 </span>
                 
             </li>
             <li>
                 <RouterLink to ="/sign-in" class="nav-icon">
+                  <img class="nav-icon" src="../src/assets/accounticon.svg">
+                </RouterLink>
+                
+            </li>
+            <li>
+                <RouterLink to ="/sign-up" class="nav-icon">
                   <img class="nav-icon" src="../src/assets/accounticon.svg">
                 </RouterLink>
                 

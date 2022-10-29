@@ -3,16 +3,35 @@
   import { useProductsStore } from "../stores/products";
   
   export default {
-
+    data(){
+      return{
+        type: 'Todos'
+      }
+    },
+    props: {
+      msg: String
+    },
     computed: {
       ...mapStores(useProductsStore),
       allProducts() {
-        return this.productsStore.getProducts;
+        if (this.type==='Todos') {
+          return this.productsStore.getProducts;
+        }else{
+          return this.productsStore.getFilteredProducts;
+        }
       },
+      getTypes(){
+        return this.productsStore.getAllTypes
+      }
     },
     
     mounted(){
       this.productsStore.loadProducts()
+    },
+    methods: {
+      setFilter(key, value){
+        this.productsStore.applyFilter(key, value)
+      }
     }
   };
 </script>
@@ -27,13 +46,10 @@
       <div class="filters">
         
         <div class="filterItem">
-          <label for="type">Filtrar por:</label>
-          <select name="filterBy" id="filterBy">
-            <option value="">Todos los productos</option>
-            <option value="kigurumis">Kigurumis</option>
-            <option value="superior">Superior</option>
-            <option value="inferior">Inferior</option>
-            <option value="accesorios">Accesorios</option>
+          <label for="filterType">Filtrar por:</label>
+          
+          <select name="filterType" id="filterType" v-model="type" @change="() => setFilter('type', type)">
+            <option v-for="type in getTypes" :key="type" :value="type" > {{type}} </option>
           </select>
         </div>
 
@@ -52,8 +68,8 @@
     <section class="products">
       <RouterLink class="singleProduct" v-for="product in allProducts" :key="product.name" :to="`/details/${product.id}`">
         <img :src="product.image"/>
-      <h4>{{ product.name }}</h4>
-      <p>${{ product.price }}</p>
+        <h4>{{ product.name }}</h4>
+        <p>${{ product.price }}</p>
     </RouterLink>
     </section>
   </div>

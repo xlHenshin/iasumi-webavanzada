@@ -9,6 +9,6 @@ const app = createApp(App)
 
 import './assets/main.scss'
 
-app.use(pinia);
 app.use(router);
+app.use(pinia);
 app.mount('#app')
