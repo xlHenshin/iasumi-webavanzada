@@ -27,6 +27,7 @@ export default {
         <RouterLink to ="/about" class="firstItems">INFERIOR</RouterLink>
         <RouterLink to ="/about" class="firstItems">ACCESORIOS</RouterLink>
         <RouterLink to ="/create" class="firstItems">MÁS</RouterLink>
+
   
       </div>
 
@@ -39,9 +40,10 @@ export default {
                 
             </li>
             <li>
-                <a href="#">
-                    <img class="nav-icon" src="../src/assets/accounticon.svg">
-                </a>
+                <RouterLink to ="/sign-in" class="nav-icon">
+                  <img class="nav-icon" src="../src/assets/accounticon.svg">
+                </RouterLink>
+                
             </li>
             <li>
                 <a href="#">
