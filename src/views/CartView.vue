@@ -5,7 +5,7 @@
   export default {
     data() {
         return {
-        cartProducts: {} 
+        
         };
     },
     computed: {
@@ -15,8 +15,7 @@
         }
     },
     mounted() {
-        this.cartProducts = this.productsStore.getMyCart()
-        console.log(this.cartProducts);
+
     },
     methods: {
         

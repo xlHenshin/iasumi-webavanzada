@@ -10,7 +10,7 @@
                 price: "",
                 description: "",
                 type:"",
-                productImage:""
+                file:""
             };
         },
         computed: {
@@ -21,20 +21,21 @@
         },
         methods: {
             createNewProduct() {
+                
                 const newProduct = {
                     id: this.id,
                     name: this.name,
                     price: this.price,
-                    image: this.productImage,
+                    image: this.file,
                     description: this.description,
-                    type: this.type
+                    type: this.type,
                 };
         
                 this.productsStore.newProduct(newProduct);
                 this.id="";
                 this.name = "";
                 this.price = "";
-                //this.productImage = "";
+                this.file = "";
                 this.description = "";
                 this.type = "";
             },
@@ -67,12 +68,13 @@
     <section class="newProductData">
         <h2>REGISTRAR NUEVO PRODUCTO</h2>
         <div class="newData">
-            <input placeholder='Id' v-model="id" type="text" name="Name" id="name" />
+            <input placeholder='Id' v-model="id" type="text" name="Name" id="id" />
             <input placeholder='Nombre' v-model="name" type="text" name="Name" id="name" />
             <input placeholder="Precio" v-model="price" type="text" name="Price" id="price" />
             <textarea v-model="description" placeholder="Escribe una descripción" ref="textarea"></textarea>
-            <input placeholder="Tipo" v-model="type" type="text" name="Tipo" id="price" />
-            <input type="file" name="File" id="myFileInput" @change="(e)=> readImage(e)">
+            <input placeholder="Tipo" v-model="type" type="text" name="Type" id="type" />
+            <!--<input type="file" name="File" id="myFileInput" @change="(e)=> readImage(e)">-->
+            <input placeholder="Link imagen" v-model="file" type="text" name="File" id="file" />
             <button  @click="(e) => createNewProduct()">CREAR</button>
         </div>
     </section>

@@ -32,10 +32,15 @@ export const useProductsStore = defineStore("products", {
         }
     },
     actions: {
-        newProduct(product) {
-            this.localStorageProducts.push(product)
-            this.products.push(product);
-            localStorage.setItem('products', JSON.stringify(this.localStorageProducts))
+        async newProduct(product) {
+            try {
+                const newProduct = product;
+                const elementId = newProduct.id
+                await setDoc(doc(db, "products", elementId),newProduct)
+                alert("¡Producto creado!")
+            } catch (error) {
+                console.log(error)
+            }
         },
         loadProducts() {
             this.localStorageProducts = JSON.parse(localStorage.getItem('products'))
@@ -64,6 +69,7 @@ export const useProductsStore = defineStore("products", {
             }
 
             this.cart.push(productAdded);
+
             alert("¡Tu producto ha sido agregado al carrito!")
             console.log(this.cart)
         },
