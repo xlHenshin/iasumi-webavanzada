@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/config";
 import { db } from "../firebase/config";
 import { collection, addDoc } from "firebase/firestore";
@@ -48,6 +48,6 @@ export const useAuthenticationStore = defineStore("authentication", {
           const errorMessage = error.message;
           alert(errorMessage);
         }
-      }
+      },
   },
 });

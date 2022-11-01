@@ -15,6 +15,12 @@
       );
       console.log(this.currentProduct);
     },
+    methods: {
+      addToCart(e){
+        e.preventDefault();
+        this.productsStore.addToCart(this.currentProduct)
+      }
+    }
   };
   </script>
 
@@ -46,7 +52,7 @@
           <button>+</button>
         </div>
 
-        <button class="cartButton">AÑADIR AL CARRO</button>
+        <button @click="addToCart" class="cartButton">AÑADIR AL CARRO</button>
       </div>
       
       <div class="infoBottom">
@@ -153,10 +159,12 @@
     font-size: 24px;
     font-weight: 600;
     margin-bottom: 10px;
+    width: 30vw;
   }
 
   .infoBottom p{
     font-size: 16px;
     font-weight: 400;
+    width: 30vw;
   }
 </style>

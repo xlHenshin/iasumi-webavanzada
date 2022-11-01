@@ -57,15 +57,7 @@
             <option v-for="type in getTypes" :key="type" :value="type" > {{type}} </option>
           </select>
         </div>
-        
-        <div class="filterItem">
-          <label for="type">Ordenar por:</label>
-          <select name="orderBy" id="filterBy">
-            <option value="">Selecciona una opción</option>
-            <option value="asc">Precio: Bajo - Alto</option>
-            <option value="desc">Price: Alto - Bajo</option>
-          </select>
-        </div>
+
       </div>
 
     </div>

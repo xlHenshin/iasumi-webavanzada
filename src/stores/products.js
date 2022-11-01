@@ -6,12 +6,13 @@ export const useProductsStore = defineStore("products", {
     state: () => ({
        
         databaseProducts: [],
+        cart: [],
         localStorageProducts: [],
         selectedFilters: {}
     }),
     getters: {
-        getProducts: (state) => [...state.products],
         getFirebaseProducts: (state) => [...state.databaseProducts],
+        getCart: (state) => [...state.cart],
         getFilteredProducts: (state) => {
             const filteredProducts = state.databaseProducts.filter((product)=> {
                 const types = product.type
@@ -49,6 +50,23 @@ export const useProductsStore = defineStore("products", {
             this.selectedFilters[key] = value
             console.log(this.selectedFilters)
         },
+        getMyCart(){
+
+            const cart = localStorage.getItem("cart")
+            return cart ? JSON.parse(cart) : [];
+        },
+        async addToCart(product){
+            
+            const productAdded = {
+                name: product.name,
+                price: product.price,
+                image: product.image,
+            }
+
+            this.cart.push(productAdded);
+            alert("¡Tu producto ha sido agregado al carrito!")
+            console.log(this.cart)
+        },
         async getFirebaseData(){
 
             const collectionRef = collection(db, "products");
@@ -67,8 +85,7 @@ export const useProductsStore = defineStore("products", {
             this.databaseProducts=firebaseProducts
             
         },
-        
-        //método para subir los productos
+
         async addProductsDatabase(){
             try {
                 const dbUpload = this.products;

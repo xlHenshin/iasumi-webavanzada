@@ -1,13 +1,12 @@
 <script>
 import { RouterLink, RouterView } from 'vue-router'
 import FooterComp from './components/Footer.vue'
-import MainComp from './components/Main.vue'
+
 
 export default {
   components:{
     RouterLink, RouterView,
-    FooterComp,
-    MainComp
+    FooterComp
   }
 }
 
@@ -48,9 +47,9 @@ export default {
               
           </li>
           <li>
-              <a href="#">
+              <RouterLink to ="/cart" class="nav__icon">
                   <img class="nav__icon" src="../src/assets/shopbagicon.svg">
-              </a>
+              </RouterLink>
           </li>
       </ul>
     </nav>
