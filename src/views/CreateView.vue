@@ -16,7 +16,7 @@
         computed: {
             ...mapStores(useProductsStore),
             allProducts() {
-                return this.productsStore.getProducts;
+                return this.productsStore.getFirebaseData;
             },
         },
         methods: {

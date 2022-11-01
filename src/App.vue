@@ -18,45 +18,41 @@ export default {
   <header>
     <nav class="nav">
       <RouterLink to ="/">
-        <img class="nav-logo" src="../src/assets/iasumilogo.avif">
+        <img class="nav__logo" src="../src/assets/iasumilogo.avif">
       </RouterLink>
 
-      <div class="nav-items">
-        <RouterLink to ="/about" class="firstItems">KIGURUMIS</RouterLink>
-        <RouterLink to ="/about" class="firstItems">SUPERIOR</RouterLink>
-        <RouterLink to ="/about" class="firstItems">INFERIOR</RouterLink>
-        <RouterLink to ="/about" class="firstItems">ACCESORIOS</RouterLink>
-        <RouterLink to ="/create" class="firstItems">MÁS</RouterLink>
+      <div class="nav__itemsCenter">
+        <RouterLink to ="/about" class="nav__firstItems">KIGURUMIS</RouterLink>
+        <RouterLink to ="/about" class="nav__firstItems">SUPERIOR</RouterLink>
+        <RouterLink to ="/about" class="nav__firstItems">INFERIOR</RouterLink>
+        <RouterLink to ="/about" class="nav__firstItems">ACCESORIOS</RouterLink>
+        <RouterLink to ="/create" class="nav__firstItems">MÁS</RouterLink>
 
   
       </div>
 
-        <ul class="nav-items leftitem">
-            <li>
-                <span>
-                    <img class="nav-icon" src="../src/assets/searchicon.svg" alt="">
-                    <input type="text" class="nav-search" placeholder="Buscar..." id="">
-                </span>
-                
-            </li>
-            <li>
-                <RouterLink to ="/sign-in" class="nav-icon">
-                  <img class="nav-icon" src="../src/assets/accounticon.svg">
-                </RouterLink>
-                
-            </li>
-            <li>
-                <RouterLink to ="/sign-up" class="nav-icon">
-                  <img class="nav-icon" src="../src/assets/accounticon.svg">
-                </RouterLink>
-                
-            </li>
-            <li>
-                <a href="#">
-                    <img class="nav-icon" src="../src/assets/shopbagicon.svg">
-                </a>
-            </li>
-        </ul>
+      <ul class="nav__itemsRight">
+          <li>
+            <input type="text" class="nav__search" placeholder="Buscar..." id="">
+          </li>
+          <li>
+              <RouterLink to ="/sign-in" class="nav__icon">
+                <img class="nav__icon" src="../src/assets/login.svg">
+              </RouterLink>
+              
+          </li>
+          <li>
+              <RouterLink to ="/sign-up" class="nav__icon">
+                <img class="nav__icon" src="../src/assets/accounticon.svg">
+              </RouterLink>
+              
+          </li>
+          <li>
+              <a href="#">
+                  <img class="nav__icon" src="../src/assets/shopbagicon.svg">
+              </a>
+          </li>
+      </ul>
     </nav>
   </header>
   <main>
@@ -70,6 +66,18 @@ export default {
 
 <style scoped lang="scss">
 
+  $brandColor: #FFE905;
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body{
+      background-size: cover;
+  }
+
   header{
     width: 100%;
     position:relative;
@@ -81,44 +89,63 @@ export default {
 
   .nav{
         width: 100%;
-        height: 83px;
+        height: 5vw;
         display: flex;
         flex-direction: row;
-        background-color: #FFE905;
+        background-color: $brandColor;
         align-items: center;
         justify-content: space-between;
-    }
 
-    .nav-logo{
-        margin-left: 50px;
-        margin-right: 50px;
-        margin-top: 18px;
-        margin-bottom: 18px;
-        width: 135px;
-        height: 47px;
-    }
+        &__logo{
+        margin-left: 2vw;
+        margin-top: 1vw;
+        margin-bottom: 1vw;
+        width: 8vw;
+      }
 
-    .nav-items{
+      &__firstItems{
+        margin-right: 2vw;
+      }
+
+      &__icon{
+        height: 1.5vw;
+        width: auto;
+        margin-left: .2vw;
+        margin-right: .2vw;
+      }
+
+      &__itemsCenter a{
+        color:black;
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      &__itemsRight{
         display: flex;
         flex-direction: row;
         align-items: center;
         list-style: none;
+        margin-right: 2vw;
+      }
+
+      &__search{
+        background-color: white;
+        border: solid .1vw #000;
+        padding-top: .5vw;
+        padding-bottom: .5vw;
+        padding-left: 1vw;
+        padding-right: 1vw;
+        color: rgb(0, 0, 0);
         font-weight: 600;
-        color:black;
-    }
+        font-size: .6vw;
+        border-radius: 0.2vw;
+        letter-spacing: 0.1vw;
+      }
 
-    .nav-items a{
-        color:black;
-        text-decoration: none;
-    }
+  }
 
-    .firstItems{
-        margin-right: 45px;
-    }
-
-    .nav-icon{
-        height: 25px;
-        width: auto;
-    }
+  footer{
+    width: 100%;
+  }
 
 </style>

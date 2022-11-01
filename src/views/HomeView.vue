@@ -14,15 +14,15 @@
 <template>
   <div class="carousel">
 
-      <div class="carousel-content">
-      <div class="carousel-text">
+    <div class="carousel__content">
+      <div class="carousel__text">
           <h2>ADVENTURE TIME <br/>COLECTION</h2>
       </div>
-      
-      <a href="#" class="carousel-button">Ver colección</a>
-      </div>
+    
+      <a href="#" class="carousel__button">Ver colección</a>
+    </div>
 
-      <img src="../assets/portada.png">
+    <img src="../assets/portada.png">
 
   </div>
 
@@ -44,6 +44,9 @@
 </template>
 
 <style lang="scss" scoped>
+
+  $backcollectioncolor: #5A0781;
+
   .carousel{
   display: flex;
   flex-direction: column;
@@ -52,78 +55,102 @@
 
 .carousel img{
   width: 100%;
-  height: 100%;
+  height: 50vw;
   object-fit: cover;
 }
 
-.carousel-content{
+.carousel__content{
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top:550px
+  top:40vw;
 }
 
-.carousel-text{
+.carousel__text{
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px
+  margin-bottom: 1.5vw
 }
-.carousel-text h2{
+.carousel__text h2{
   font-weight: 700;
-  font-size: 40px;
+  font-size: 2.5vw;
   line-height: 1;
 }
 
-.carousel-content a{
+.carousel__content {
+  display: flex;
+  flex-direction: column;
+  align-items: left ;
+}
+
+.carousel__content a{
   text-decoration: none;
   color: white;
-  border: solid 3px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 32px;
-  padding-right: 32px;
+  border: solid .2vw;
+  padding-top: .5vw;
+  padding-bottom: .5vw;;
+  padding-left: 2vw;;
+  padding-right: 2vw;;
   font-weight: 500;
-  border-radius: 10px;
-  font-size: 18px;
+  border-radius: .5vw;
+  font-size: 1vw;
 }
 
 .collection{
   display: flex;
   flex-direction: row;
-
-  margin: 50px;
+  margin: 4vw;
+  justify-content: center;
 
   &__img{
-    height: 500px;
+    height: 30vw;
   }
 
   &__right{
-    height: 500px;
-    background-color: #5A0781;
+    height: 30vw;
+    background-color: $backcollectioncolor;
     color: white;
-    padding: 50px;
+    padding: 3vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   &__right a{
+    text-align: center;
     text-decoration: none;
     color: white;
-    border: solid 3px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 32px;
-    padding-right: 32px;
+    border: solid .2vw;
+    padding-top: .4vw;
+    padding-bottom: .4vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
     font-weight: 500;
-    border-radius: 10px;
-    font-size: 18px;
+    border-radius: .5vw;
+    font-size: 1vw;
   }
 
   &__text{
     display: flex;
     flex-direction: column;
     text-align: right;
+    margin-bottom: 3vw;
+  }
+
+  &__text h2{
+    margin-top: -1vw;
+    font-size: 3vw;
+  }
+  &__text h3{
+    font-size: 1vw;
+  }
+
+  &__text p{
+    font-size: 0.8vw;
+    font-weight: 500;
   }
 }
 </style>

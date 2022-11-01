@@ -15,10 +15,14 @@
       ...mapStores(useProductsStore),
       allProducts() {
         if (this.type==='Todos') {
-          return this.productsStore.getProducts;
+          console.log(this.productsStore.getFirebaseProducts)
+          return this.productsStore.getFirebaseProducts;
         }else{
           return this.productsStore.getFilteredProducts;
         }
+      },
+      dbProducts(){
+        return this.productsStore.getFirebaseProducts;
       },
       getTypes(){
         return this.productsStore.getAllTypes
@@ -27,6 +31,7 @@
     
     mounted(){
       this.productsStore.loadProducts()
+      this.productsStore.getFirebaseData();
     },
     methods: {
       setFilter(key, value){
@@ -52,16 +57,16 @@
             <option v-for="type in getTypes" :key="type" :value="type" > {{type}} </option>
           </select>
         </div>
-
-      <div class="filterItem">
-        <label for="type">Ordenar por:</label>
-        <select name="orderBy" id="filterBy">
-          <option value="">Selecciona una opción</option>
-          <option value="asc">Precio: Bajo - Alto</option>
-          <option value="desc">Price: Alto - Bajo</option>
-        </select>
+        
+        <div class="filterItem">
+          <label for="type">Ordenar por:</label>
+          <select name="orderBy" id="filterBy">
+            <option value="">Selecciona una opción</option>
+            <option value="asc">Precio: Bajo - Alto</option>
+            <option value="desc">Price: Alto - Bajo</option>
+          </select>
+        </div>
       </div>
-    </div>
 
     </div>
 

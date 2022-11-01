@@ -1,51 +1,19 @@
 import { defineStore } from "pinia";
+import { db } from "../firebase/config";
+import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 ///// OPTIONS STORE
 export const useProductsStore = defineStore("products", {
     state: () => ({
-        products: [
-            { id: "1",
-            name: "Buso Hockey Puro Hueso", 
-            price: '160000', 
-            image: "../public/busopurohueso.png",
-            description: 'Hola soy una descripción del buso',
-            type: "Superior"
-            },
-            { id: "2",
-            name: "Camiseta Inosuke", 
-            price: '90000', 
-            image: "../public/camisetainosuke.png",
-            description: 'Hola soy una descripción de la camiseta',
-            type: "Superior"
-            },
-            { id: "3",
-            name: "Chaqueta Coraje", 
-            price: '160000', 
-            image: "../public/chaquetacoraje.png",
-            description: 'Hola soy una descripción de la camiseta',
-            type: "Superior"
-            },
-            { id: "4",
-            name: "Pantuflas Gengar", 
-            price: '80000', 
-            image: "../public/pantuflasgengar.png",
-            description: 'Hola soy una descripción de la camiseta',
-            type: "Accesorios"
-            },
-            { id: "5",
-            name: "Jogger Carlitos", 
-            price: '150000', 
-            image: "../public/joggercarlitos.png",
-            description: 'Hola soy una descripción de la camiseta',
-            type: "Inferior"
-            },
-        ],
+       
+        databaseProducts: [],
         localStorageProducts: [],
         selectedFilters: {}
     }),
     getters: {
         getProducts: (state) => [...state.products],
+        getFirebaseProducts: (state) => [...state.databaseProducts],
         getFilteredProducts: (state) => {
-            const filteredProducts = state.products.filter((product)=> {
+            const filteredProducts = state.databaseProducts.filter((product)=> {
                 const types = product.type
                 const typeFilter = state.selectedFilters.type
                 console.log(types)
@@ -74,12 +42,50 @@ export const useProductsStore = defineStore("products", {
             this.products = this.products.concat([...this.localStorageProducts])
         },
         getProductById(id) {
-            const filteredProducts = this.products.filter((product) => id.toLowerCase() === product.id.toLowerCase());
+            const filteredProducts = this.databaseProducts.filter((product) => id.toLowerCase() === product.id.toLowerCase());
             return filteredProducts ? {...filteredProducts[0] } : null
         },
         applyFilter(key, value){
             this.selectedFilters[key] = value
             console.log(this.selectedFilters)
+        },
+        async getFirebaseData(){
+
+            const collectionRef = collection(db, "products");
+            const { docs } = await getDocs(collectionRef);
+
+            const firebaseProducts = docs.map((doc) => {
+                return {
+                id: doc.id,
+                name: doc.data().element.name,
+                price: doc.data().element.price,
+                image: doc.data().element.image,
+                description: doc.data().element.description,
+                type: doc.data().element.type,
+                };
+            });
+            this.databaseProducts=firebaseProducts
+            
+        },
+        
+        //método para subir los productos
+        async addProductsDatabase(){
+            try {
+                const dbUpload = this.products;
+                console.log('base a subir ', dbUpload)
+
+                for (let index = 0; index < dbUpload.length; index++) {
+                    const element = dbUpload[index];
+                    const elementId = dbUpload[index].id;
+                    await setDoc(doc(db, "products", elementId), {element});
+                    console.log('Producto subido: ', elementId)
+                }
+                
+            } catch (error) {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                alert(errorMessage)
+            }
         }
     },
 });

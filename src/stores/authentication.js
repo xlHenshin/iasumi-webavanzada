@@ -31,7 +31,7 @@ export const useAuthenticationStore = defineStore("authentication", {
       },
       async newUserAwait(email, password){
         try{
-          const {userCredential} = await createUserWithEmailAndPassword(auth, email, password)
+          const userCredential = await createUserWithEmailAndPassword(auth, email, password)
           const isAdmin = false;
           const userData = {
             email: email,

@@ -1,30 +1,30 @@
 <template>
     <div class="footer">
-        <aside class="footer-aside">
+        <aside class="footer__aside">
             <h2>SOBRE NOSOTRXS</h2>
-            <div class="footer-list">
-                <ul class="footer-items">
-                    <li class="items">
+            <div class="footer__list">
+                <ul class="footer__items">
+                    <li>
                         <a href="#">
                             <span>POLÍTICAS</span>
                         </a>
                     </li>
-                    <li class="items">
+                    <li>
                         <a href="#">
                             <span>TIENDAS</span>
                         </a>
                     </li>
-                    <li class="items">
+                    <li>
                         <a href="#">
                             <span>ENVÍOS</span>
                         </a>
                     </li>
-                    <li class="items">
+                    <li>
                         <a href="#">
                             <span>PREGUNTAS FRECUENTES</span>
                         </a>
                     </li>
-                    <li class="items">
+                    <li>
                         <a href="#">
                             <span>CONTÁCTANOS</span>
                         </a>
@@ -33,151 +33,154 @@
             </div>
         </aside>
 
-        <div class="footer-newsletter">
-            <div class="newsletterText">
+        <div class="newsletter">
+            <div class="newsletter__Text">
                 <h2>SUSCRIBETE A <br/>NUESTRO NEWSLETTER</h2>
                 <p>Obten descuentos de nuestros productos</p>
             </div>
 
-            <div class="newsletterData">
-                <div class="newsletterUp">
-                    <div class="newsletterInput1">
+            <div class="newsletter__Data">
+                <div class="newsletter__Up">
+                    <div class="newsletter__Input1">
                         <span>Nombre</span>
                         <input type="text" placeholder="John">
                     </div>
-                    <div class="newsletterInput2">
+                    <div class="newsletter__Input2">
                         <span>Apellido</span>
                         <input type="text" placeholder="Doe">
                     </div>
                 </div>
-                <div class="newsletterDown">
-                    <div class="newsletterInput-Long">
+                <div class="newsletter__Down">
+                    <div class="newsletter__InputLong">
                         <span>Email</span>
                         <input type="text" placeholder="johndoe@email.com">
                     </div>
 
-                    <input type="button" value="ENVIAR">
+                    <input class="newsletter__submit" type="submit" value="ENVIAR">
                 </div>
             </div>
         </div>
     </div>
 </template>
 
-<style>
+<style scoped lang="scss">
+
+    $border : solid .1vw #000;
     .footer{
         width: 100%;
         background-color: #FFE905;
-        padding: 32px;
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+        padding-right: 6vw;
+        padding-left: 6vw;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    }
 
-    .footer-aside{
+        &__aside{
         width: 40%;
         display: flex;
         flex-direction: column;
         align-items: left;
         list-style: none;
         font-weight: 600;
-    }
+        }
 
-    .footer-list{
-        margin-top: 15px;
-    }
-
-    .footer-items{
+        &__items{
         display: flex;
         flex-direction: column;
         align-items: left;
         list-style: none;
         font-weight: 600;
+        }
+
+        &__items a{
+            color:black;
+            text-decoration: none;
+        }
+
+        &__list{
+            margin-top: 1vw;
+        }
     }
 
-    .footer-items a{
-        color:black;
-        text-decoration: none;
-    }
-
-    .footer-newsletter{
+    .newsletter{
         width: 60%;
         display: flex;
         flex-direction: row;
         line-height: 1;
-        align-items: top;
-    }
+        justify-content:right;
 
-    .newsletterText{
-        margin-right: 30px;
-    }
+        &__Text{
+            margin-right: 2vw;
+        }
 
-    .newsletterText h2{
-        margin-bottom: 10px;
-    }
+        &__Text h2{
+            margin-bottom: 1vw;
+        }
 
-    .newsletterUp{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
+        &__Up{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
 
-    .newsletterInput1{
-        display: flex;
-        flex-direction: column;
-    }
-
-    .newsletterInput1 input{
-        border: solid 1px #000;
-        border-radius: 0;
-        padding: 15px;
-        margin-top: 10px;
-        margin-right: 10px;
-    }
-
-    .newsletterInput2{
+        &__Input1{
         display: flex;
         flex-direction: column;
-    }
+        }
 
-    .newsletterInput2 input{
-        border: solid 1px #000;
-        border-radius: 0;
-        padding: 15px;
-        margin-top: 10px;
-    }
-    
-    .newsletterDown{
-        margin-top: 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: left;
-    }
+        &__Input1 input{
+            border: $border;
+            border-radius: 0;
+            padding: .8vw;
+            margin-top: .5vw;
+            margin-right: .5vw;
+        }
 
-    
-    .newsletterInput-Long{
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-    }
+        &__Input2{
+            display: flex;
+            flex-direction: column;
+        }
 
-    .newsletterInput-Long input{
-        border: solid 1px #000;
-        border-radius: 0;
-        padding: 15px;
-        margin-top: 10px;
-    }
+        &__Input2 input{
+            border: $border;
+            border-radius: 0;
+            padding: .8vw;
+            margin-top: .5vw;
+        }
+        
+        &__Down{
+            margin-top: 1vw;
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+        }
 
-    input[type="button"]{
-    
-    background-color: black;
-    border: none;
-    color: white;
-    text-decoration: none;
-    cursor: pointer;
-    padding:12px;
-    padding-left: 80px;
-    padding-right: 80px;
-    border-radius: 10px;
-    font-weight: 600;
-}
+        
+        &__InputLong{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2vw;
+        }
+
+        &__InputLong input{
+            border: $border;
+            border-radius: 0;
+            padding: .8vw;
+            margin-top: .5vw;
+        }
+
+        &__submit{
+
+            background-color: black;
+            border: none;
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+            padding: 1vw;
+            border-radius: .5vw;
+            font-weight: 600;
+        }
+    }
 </style>
