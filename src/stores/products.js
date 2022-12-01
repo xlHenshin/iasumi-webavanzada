@@ -4,7 +4,6 @@ import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 ///// OPTIONS STORE
 export const useProductsStore = defineStore("products", {
     state: () => ({
-       
         databaseProducts: [],
         cart: [],
         localStorageProducts: [],
@@ -81,11 +80,7 @@ export const useProductsStore = defineStore("products", {
             const firebaseProducts = docs.map((doc) => {
                 return {
                 id: doc.id,
-                name: doc.data().element.name,
-                price: doc.data().element.price,
-                image: doc.data().element.image,
-                description: doc.data().element.description,
-                type: doc.data().element.type,
+                ...doc.data()
                 };
             });
             this.databaseProducts=firebaseProducts
@@ -98,9 +93,10 @@ export const useProductsStore = defineStore("products", {
                 console.log('base a subir ', dbUpload)
 
                 for (let index = 0; index < dbUpload.length; index++) {
-                    const element = dbUpload[index];
+                    const product = dbUpload[index];
                     const elementId = dbUpload[index].id;
-                    await setDoc(doc(db, "products", elementId), {element});
+                    const ref = doc(db,"products",elementId)
+                    await setDoc(ref, product);
                     console.log('Producto subido: ', elementId)
                 }
                 
